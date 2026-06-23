@@ -1,0 +1,23 @@
+pipeline {
+
+    agent any
+
+    stages {
+
+        stage('Checkout') {
+            steps {
+                git 'https://github.com/YOUR_USERNAME/devops-gitops-project.git'
+            }
+        }
+
+        stage('Build Image') {
+            steps {
+                sh '''
+                docker build -t devops-app:v1 app/
+                '''
+            }
+        }
+
+    }
+
+}
